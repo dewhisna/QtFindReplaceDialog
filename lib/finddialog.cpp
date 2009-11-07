@@ -24,3 +24,7 @@ void FindDialog::changeEvent(QEvent *e)
         break;
     }
 }
+
+void FindDialog::setTextEdit(QTextEdit *textEdit) {
+    ui->findForm->setTextEdit(textEdit);
+}

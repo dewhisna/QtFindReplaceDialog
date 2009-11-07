@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_findDialog = new FindDialog(this);
     m_findDialog->setModal(false);
 
+    m_findDialog->setTextEdit(ui->textEdit);
+
     ui->textEdit->setText(
             "Here's some text\nYou can use it to find\n"
             "with the Find/Replace dialog\n"
