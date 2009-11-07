@@ -7,6 +7,8 @@ namespace Ui {
     class MainWindow;
 }
 
+class FindDialog;
+
 class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
@@ -16,8 +18,17 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
+    void createActions();
+
+private slots:
+    void about();
+
+    void findDialog();
+
 private:
     Ui::MainWindow *ui;
+
+    FindDialog *m_findDialog;
 };
 
 #endif // MAINWINDOW_H

@@ -9,6 +9,13 @@ QT       += testlib
 TARGET = qtfindreplacedialog_example
 TEMPLATE = app
 
+#unix:!macx {
+#qtfindreplacedialog_example.depends += ../lib/libqtfindreplacedialog.a
+#}
+
+INCLUDEPATH += . ../lib
+DEPENDPATH += . ../lib
+LIBS += -L../lib -lqtfindreplacedialog
 
 SOURCES += main.cpp\
         mainwindow.cpp
