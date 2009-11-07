@@ -11,12 +11,15 @@ FindForm::FindForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->errorTextEdit->setVisible(false);
+    ui->errorLabel->setText("");
 
     connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(textToFindChanged()));
     connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(validateRegExp(QString)));
 
+    connect(ui->regexCheckBox, SIGNAL(toggled(bool)), this, SLOT(regexpSelected(bool)));
+
     connect(ui->findButton, SIGNAL(clicked()), this, SLOT(find()));
+    connect(ui->closeButton, SIGNAL(clicked()), parent, SLOT(close()));
 }
 
 FindForm::~FindForm()
@@ -40,21 +43,28 @@ void FindForm::textToFindChanged() {
     ui->findButton->setEnabled(ui->textToFind->text().size() > 0);
 }
 
+void FindForm::regexpSelected(bool sel) {
+    if (sel)
+        validateRegExp(ui->textToFind->text());
+    else
+        validateRegExp("");
+}
+
 void FindForm::validateRegExp(const QString &text) {
-    if (!ui->regexCheckBox->isChecked() || ui->textToFind->text().size() == 0) {
-        ui->errorTextEdit->setVisible(false);
+    if (!ui->regexCheckBox->isChecked() || text.size() == 0) {
+        ui->errorLabel->setText("");
         return; // nothing to validate
     }
 
-    QRegExp reg(ui->textToFind->text(),
+    QRegExp reg(text,
                 (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
 
     if (reg.isValid()) {
-        ui->errorTextEdit->setVisible(false);
+        ui->errorLabel->setText("");
     } else {
-        ui->errorTextEdit->setText("error in regular expression:\n");
-        ui->errorTextEdit->append(reg.errorString());
-        ui->errorTextEdit->setVisible(true);
+        ui->errorLabel->setText("<span style=\" font-weight:600; color:#ff0000;\">" +
+                                reg.errorString() +
+                                "</spam>");
     }
 }
 

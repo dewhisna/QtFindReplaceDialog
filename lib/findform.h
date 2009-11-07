@@ -35,6 +35,9 @@ protected slots:
     /// checks whether the passed text is a valid regexp
     void validateRegExp(const QString &text);
 
+    /// the regexp checkbox was selected
+    void regexpSelected(bool sel);
+
 private:
     Ui::FindForm *ui;
 
