@@ -32,6 +32,9 @@ protected slots:
     /// when the text edit contents changed
     void textToFindChanged();
 
+    /// checks whether the passed text is a valid regexp
+    void validateRegExp(const QString &text);
+
 private:
     Ui::FindForm *ui;
 
