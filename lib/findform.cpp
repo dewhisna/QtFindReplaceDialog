@@ -77,18 +77,27 @@ void FindForm::find() {
 
     const QString &toSearch = ui->textToFind->text();
 
-    /*
-    if (back)
-            textCursor = textEdit->document()->find(toSearch,textCursor,QTextDocument::FindBackward);
-    else
-            textCursor = textEdit->document()->find(toSearch,textCursor);
-    */
+    if (ui->regexCheckBox->isChecked()) {
+        QRegExp reg(toSearch,
+                    (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
 
-    qDebug() << "searching for: " << toSearch;
+        qDebug() << "searching for regexp: " << reg.pattern();
 
-    if (back)
+        if (back) {
+            textCursor = textEdit->document()->find(reg, textCursor, QTextDocument::FindBackward);
+        } else {
+            textCursor = textEdit->document()->find(reg, textCursor);
+        }
+
+        textEdit->setTextCursor(textCursor);
+    } else {
+        qDebug() << "searching for: " << toSearch;
+
+        if (back) {
             textEdit->find(toSearch,QTextDocument::FindBackward);
-    else
+        } else {
             textEdit->find(toSearch);
+        }
+    }
 }
 
