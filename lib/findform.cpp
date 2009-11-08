@@ -97,8 +97,10 @@ void FindForm::find() {
 
         if (back)
             flags |= QTextDocument::FindBackward;
-        if (ui->caseCheckBox)
+        if (ui->caseCheckBox->isChecked())
             flags |= QTextDocument::FindCaseSensitively;
+        if (ui->wholeCheckBox->isChecked())
+            flags |= QTextDocument::FindWholeWords;
 
         textEdit->find(toSearch, flags);
     }

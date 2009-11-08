@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>483</width>
-    <height>209</height>
+    <height>224</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,6 +107,13 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="wholeCheckBox">
+          <property name="text">
+           <string>&amp;Whole words only</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </item>
@@ -148,6 +155,16 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>textToFind</tabstop>
+  <tabstop>upRadioButton</tabstop>
+  <tabstop>downRadioButton</tabstop>
+  <tabstop>caseCheckBox</tabstop>
+  <tabstop>wholeCheckBox</tabstop>
+  <tabstop>regexCheckBox</tabstop>
+  <tabstop>findButton</tabstop>
+  <tabstop>closeButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
