@@ -14,7 +14,7 @@ TEMPLATE = app
 #}
 
 INCLUDEPATH += . ../lib
-DEPENDPATH += . ../lib
+DEPENDPATH += ../lib .
 
 debug:LIBS += -L../lib/debug
 release:LIBS += -L../lib/release
