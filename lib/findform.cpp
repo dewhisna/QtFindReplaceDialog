@@ -77,30 +77,25 @@ void FindForm::find() {
 
     const QString &toSearch = ui->textToFind->text();
 
+    QTextDocument::FindFlags flags;
+
+    if (back)
+        flags |= QTextDocument::FindBackward;
+    if (ui->caseCheckBox->isChecked())
+        flags |= QTextDocument::FindCaseSensitively;
+    if (ui->wholeCheckBox->isChecked())
+        flags |= QTextDocument::FindWholeWords;
+
     if (ui->regexCheckBox->isChecked()) {
         QRegExp reg(toSearch,
                     (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
 
         qDebug() << "searching for regexp: " << reg.pattern();
 
-        if (back) {
-            textCursor = textEdit->document()->find(reg, textCursor, QTextDocument::FindBackward);
-        } else {
-            textCursor = textEdit->document()->find(reg, textCursor);
-        }
-
+        textCursor = textEdit->document()->find(reg, textCursor, flags);
         textEdit->setTextCursor(textCursor);
     } else {
         qDebug() << "searching for: " << toSearch;
-
-        QTextDocument::FindFlags flags;
-
-        if (back)
-            flags |= QTextDocument::FindBackward;
-        if (ui->caseCheckBox->isChecked())
-            flags |= QTextDocument::FindCaseSensitively;
-        if (ui->wholeCheckBox->isChecked())
-            flags |= QTextDocument::FindWholeWords;
 
         textEdit->find(toSearch, flags);
     }
