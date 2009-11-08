@@ -1,3 +1,7 @@
 readSettings writeSettings (with dialog current status)
 
 history of searched text
+
+Find Next/ Find Previous
+
+show a message when no match was found?
