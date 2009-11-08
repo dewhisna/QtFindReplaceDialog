@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2009  Lorenzo Bettini <http://www.lorenzobettini.it>
+ * See COPYING file that comes with this distribution
+ */
+
 #ifndef FINDFORM_H
 #define FINDFORM_H
 
