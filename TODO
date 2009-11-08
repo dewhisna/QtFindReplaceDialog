@@ -1,3 +1,5 @@
 readSettings writeSettings (with dialog current status)
 
 history of searched text
+
+match whole word

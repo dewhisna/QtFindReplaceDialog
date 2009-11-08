@@ -93,11 +93,14 @@ void FindForm::find() {
     } else {
         qDebug() << "searching for: " << toSearch;
 
-        if (back) {
-            textEdit->find(toSearch,QTextDocument::FindBackward);
-        } else {
-            textEdit->find(toSearch);
-        }
+        QTextDocument::FindFlags flags;
+
+        if (back)
+            flags |= QTextDocument::FindBackward;
+        if (ui->caseCheckBox)
+            flags |= QTextDocument::FindCaseSensitively;
+
+        textEdit->find(toSearch, flags);
     }
 }
 
