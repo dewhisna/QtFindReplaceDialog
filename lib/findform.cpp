@@ -65,10 +65,18 @@ void FindForm::validateRegExp(const QString &text) {
                 (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
 
     if (reg.isValid()) {
+        showError("");
+    } else {
+        showError(reg.errorString());
+    }
+}
+
+void FindForm::showError(const QString &error) {
+    if (error == "") {
         ui->errorLabel->setText("");
     } else {
         ui->errorLabel->setText("<span style=\" font-weight:600; color:#ff0000;\">" +
-                                reg.errorString() +
+                                error +
                                 "</spam>");
     }
 }
@@ -81,6 +89,8 @@ void FindForm::find() {
     bool back = ui->upRadioButton->isChecked();
 
     const QString &toSearch = ui->textToFind->text();
+
+    bool result = false;
 
     QTextDocument::FindFlags flags;
 
@@ -99,10 +109,16 @@ void FindForm::find() {
 
         textCursor = textEdit->document()->find(reg, textCursor, flags);
         textEdit->setTextCursor(textCursor);
+        result = (!textCursor.isNull());
     } else {
         qDebug() << "searching for: " << toSearch;
 
-        textEdit->find(toSearch, flags);
+        result = textEdit->find(toSearch, flags);
     }
+
+    if (result)
+        showError("");
+    else
+        showError(tr("no match found"));
 }
 

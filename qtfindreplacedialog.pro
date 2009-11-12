@@ -9,3 +9,6 @@ TEMPLATE = subdirs
 SUBDIRS = lib examples
 
 CONFIG += ordered recursive
+
+OTHER_FILES = TODO \
+    COPYING

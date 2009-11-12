@@ -30,6 +30,9 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
+    /// shows an error in the dialog
+    void showError(const QString &error);
+
 protected slots:
     /// performs the find task
     void find();
