@@ -16,9 +16,6 @@ TEMPLATE = app
 INCLUDEPATH += . ../lib
 DEPENDPATH += ../lib .
 
-debug:LIBS += -L../lib/debug
-release:LIBS += -L../lib/release
-
 LIBS += -L../lib -lqtfindreplacedialog
 
 SOURCES += main.cpp\
