@@ -8,9 +8,8 @@ SOURCES += qtfindreplacedialog.cpp \
     findform.cpp \
     finddialog.cpp
 HEADERS += qtfindreplacedialog.h \
-    lib_global.h \
     findform.h \
     finddialog.h
 FORMS += findform.ui \
     finddialog.ui
-DESTDIR=../lib
+DESTDIR = ../lib
