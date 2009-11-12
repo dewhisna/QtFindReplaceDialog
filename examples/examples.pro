@@ -17,6 +17,7 @@ INCLUDEPATH += . ../lib
 DEPENDPATH += ../lib .
 
 LIBS += -L../lib -lqtfindreplacedialog
+TARGETDEPS += ../lib/libqtfindreplacedialog.a
 
 SOURCES += main.cpp\
         mainwindow.cpp
