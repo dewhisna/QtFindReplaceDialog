@@ -3,3 +3,5 @@ readSettings writeSettings (with dialog current status)
 history of searched text
 
 Find Next/ Find Previous
+
+example with embedding of the forms in a dock?
