@@ -6,9 +6,7 @@
 #ifndef QTFINDREPLACEDIALOG_H
 #define QTFINDREPLACEDIALOG_H
 
-#include "lib_global.h"
-
-class LIBSHARED_EXPORT QtFindReplaceDialog {
+class QtFindReplaceDialog {
 public:
     QtFindReplaceDialog();
 };
