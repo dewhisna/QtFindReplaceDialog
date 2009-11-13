@@ -34,6 +34,7 @@
      <string>&amp;Find</string>
     </property>
     <addaction name="actionFind"/>
+    <addaction name="actionReplace"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -71,6 +72,17 @@
    </property>
    <property name="toolTip">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionReplace">
+   <property name="text">
+    <string>Replace</string>
+   </property>
+   <property name="toolTip">
+    <string>Opens the Find/Replace dialog</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
  </widget>

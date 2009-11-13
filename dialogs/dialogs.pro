@@ -6,10 +6,14 @@ TEMPLATE = lib
 DEFINES += LIB_LIBRARY
 SOURCES += qtfindreplacedialog.cpp \
     findform.cpp \
-    finddialog.cpp
+    finddialog.cpp \
+    findreplaceform.cpp \
+    findreplacedialog.cpp
 HEADERS += qtfindreplacedialog.h \
+    findreplaceform.h \
+    findreplacedialog.h \
     findform.h \
     finddialog.h
-FORMS += findform.ui \
-    finddialog.ui
+FORMS += findreplaceform.ui \
+    findreplacedialog.ui
 DESTDIR = ../lib

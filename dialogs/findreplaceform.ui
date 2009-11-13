@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FindForm</class>
- <widget class="QWidget" name="FindForm">
+ <class>FindReplaceForm</class>
+ <widget class="QWidget" name="FindReplaceForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>483</width>
-    <height>228</height>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -156,8 +156,6 @@ p, li { white-space: pre-wrap; }
     </layout>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>textToFind</zorder>
  </widget>
  <tabstops>
   <tabstop>textToFind</tabstop>

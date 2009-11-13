@@ -8,6 +8,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "finddialog.h"
+#include "findreplacedialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,8 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_findDialog = new FindDialog(this);
     m_findDialog->setModal(false);
-
     m_findDialog->setTextEdit(ui->textEdit);
+
+    m_findReplaceDialog = new FindReplaceDialog(this);
+    m_findReplaceDialog->setModal(false);
+    m_findReplaceDialog->setTextEdit(ui->textEdit);
 
     ui->textEdit->setText(
             "Here's some text\nYou can use it to find\n"
@@ -36,6 +40,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::createActions() {
     connect(ui->actionFind, SIGNAL(triggered()), this, SLOT(findDialog()));
+    connect(ui->actionReplace, SIGNAL(triggered()), this, SLOT(findReplaceDialog()));
 
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
@@ -63,4 +68,8 @@ void MainWindow::about()
 
 void MainWindow::findDialog() {
     m_findDialog->show();
+}
+
+void MainWindow::findReplaceDialog() {
+    m_findReplaceDialog->show();
 }

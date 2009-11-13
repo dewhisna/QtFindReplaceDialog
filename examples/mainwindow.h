@@ -13,6 +13,7 @@ namespace Ui {
 }
 
 class FindDialog;
+class FindReplaceDialog;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -29,11 +30,13 @@ private slots:
     void about();
 
     void findDialog();
+    void findReplaceDialog();
 
 private:
     Ui::MainWindow *ui;
 
     FindDialog *m_findDialog;
+    FindReplaceDialog *m_findReplaceDialog;
 };
 
 #endif // MAINWINDOW_H
