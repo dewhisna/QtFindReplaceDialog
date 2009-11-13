@@ -9,3 +9,6 @@ example with embedding of the forms in a dock?
 on-the-fly search (highlight all occurrences)
 
 qtfindreplacedialog.* can be removed
+
+finddialog and findform as derived from findreplace (removing
+replace specific widgets)
