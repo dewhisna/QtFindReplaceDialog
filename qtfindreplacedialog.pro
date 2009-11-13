@@ -6,7 +6,7 @@
 
 TEMPLATE = subdirs
 
-SUBDIRS = lib examples
+SUBDIRS = dialogs examples
 
 CONFIG += ordered recursive
 

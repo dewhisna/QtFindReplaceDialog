@@ -13,7 +13,7 @@ TEMPLATE = app
 #qtfindreplacedialog_example.depends += ../lib/libqtfindreplacedialog.a
 #}
 
-INCLUDEPATH += . ../lib
+INCLUDEPATH += . ../dialogs ../lib
 DEPENDPATH += ../lib .
 
 LIBS += -L../lib -lqtfindreplacedialog

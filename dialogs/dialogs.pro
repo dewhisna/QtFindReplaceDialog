@@ -12,4 +12,4 @@ HEADERS += qtfindreplacedialog.h \
     finddialog.h
 FORMS += findform.ui \
     finddialog.ui
-#DESTDIR = ../lib
+DESTDIR = ../lib
