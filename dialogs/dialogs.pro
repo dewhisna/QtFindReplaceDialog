@@ -4,13 +4,11 @@
 TARGET = qtfindreplacedialog
 TEMPLATE = lib
 DEFINES += LIB_LIBRARY
-SOURCES += qtfindreplacedialog.cpp \
-    findform.cpp \
+SOURCES += findform.cpp \
     finddialog.cpp \
     findreplaceform.cpp \
     findreplacedialog.cpp
-HEADERS += qtfindreplacedialog.h \
-    findreplaceform.h \
+HEADERS += findreplaceform.h \
     findreplacedialog.h \
     findform.h \
     finddialog.h
