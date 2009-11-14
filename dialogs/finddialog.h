@@ -14,6 +14,9 @@ namespace Ui {
 
 class QTextEdit;
 
+/**
+  * A find dialog
+  */
 class FindDialog : public QDialog {
     Q_OBJECT
 public:

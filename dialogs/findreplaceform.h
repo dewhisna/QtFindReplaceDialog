@@ -15,6 +15,9 @@ namespace Ui {
 
 class QTextEdit;
 
+/**
+  * The form for the find/replace dialog
+  */
 class FindReplaceForm : public QWidget {
     Q_OBJECT
 public:

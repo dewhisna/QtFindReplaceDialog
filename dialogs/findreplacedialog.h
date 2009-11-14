@@ -14,6 +14,9 @@ namespace Ui {
 
 class QTextEdit;
 
+/**
+  * A find/replace dialog.
+  */
 class FindReplaceDialog : public QDialog {
     Q_OBJECT
 public:
