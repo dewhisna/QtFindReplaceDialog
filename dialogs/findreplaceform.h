@@ -46,7 +46,7 @@ protected slots:
     /// the regexp checkbox was selected
     void regexpSelected(bool sel);
 
-private:
+protected:
     Ui::FindReplaceForm *ui;
 
     /// for searching into the text

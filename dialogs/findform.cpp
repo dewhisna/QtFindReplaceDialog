@@ -8,28 +8,18 @@
 #include <QRegExp>
 
 #include "findform.h"
-#include "ui_findform.h"
+#include "ui_findreplaceform.h"
 
 FindForm::FindForm(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::FindForm), textEdit(0)
+    FindReplaceForm(parent)
 {
-    ui->setupUi(this);
-
-    ui->errorLabel->setText("");
-
-    connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(textToFindChanged()));
-    connect(ui->textToFind, SIGNAL(textChanged(QString)), this, SLOT(validateRegExp(QString)));
-
-    connect(ui->regexCheckBox, SIGNAL(toggled(bool)), this, SLOT(regexpSelected(bool)));
-
-    connect(ui->findButton, SIGNAL(clicked()), this, SLOT(find()));
-    connect(ui->closeButton, SIGNAL(clicked()), parent, SLOT(close()));
+    ui->replaceLabel->setVisible(false);
+    ui->textToReplace->setVisible(false);
 }
 
 FindForm::~FindForm()
 {
-    delete ui;
+
 }
 
 void FindForm::changeEvent(QEvent *e)
@@ -44,81 +34,4 @@ void FindForm::changeEvent(QEvent *e)
     }
 }
 
-void FindForm::textToFindChanged() {
-    ui->findButton->setEnabled(ui->textToFind->text().size() > 0);
-}
-
-void FindForm::regexpSelected(bool sel) {
-    if (sel)
-        validateRegExp(ui->textToFind->text());
-    else
-        validateRegExp("");
-}
-
-void FindForm::validateRegExp(const QString &text) {
-    if (!ui->regexCheckBox->isChecked() || text.size() == 0) {
-        ui->errorLabel->setText("");
-        return; // nothing to validate
-    }
-
-    QRegExp reg(text,
-                (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
-
-    if (reg.isValid()) {
-        showError("");
-    } else {
-        showError(reg.errorString());
-    }
-}
-
-void FindForm::showError(const QString &error) {
-    if (error == "") {
-        ui->errorLabel->setText("");
-    } else {
-        ui->errorLabel->setText("<span style=\" font-weight:600; color:#ff0000;\">" +
-                                error +
-                                "</spam>");
-    }
-}
-
-void FindForm::find() {
-    if (!textEdit)
-        return; // TODO: show some warning?
-
-    // backward search
-    bool back = ui->upRadioButton->isChecked();
-
-    const QString &toSearch = ui->textToFind->text();
-
-    bool result = false;
-
-    QTextDocument::FindFlags flags;
-
-    if (back)
-        flags |= QTextDocument::FindBackward;
-    if (ui->caseCheckBox->isChecked())
-        flags |= QTextDocument::FindCaseSensitively;
-    if (ui->wholeCheckBox->isChecked())
-        flags |= QTextDocument::FindWholeWords;
-
-    if (ui->regexCheckBox->isChecked()) {
-        QRegExp reg(toSearch,
-                    (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
-
-        qDebug() << "searching for regexp: " << reg.pattern();
-
-        textCursor = textEdit->document()->find(reg, textCursor, flags);
-        textEdit->setTextCursor(textCursor);
-        result = (!textCursor.isNull());
-    } else {
-        qDebug() << "searching for: " << toSearch;
-
-        result = textEdit->find(toSearch, flags);
-    }
-
-    if (result)
-        showError("");
-    else
-        showError(tr("no match found"));
-}
 

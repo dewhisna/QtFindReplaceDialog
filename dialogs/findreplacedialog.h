@@ -29,7 +29,6 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
-private:
     Ui::FindReplaceDialog *ui;
 };
 

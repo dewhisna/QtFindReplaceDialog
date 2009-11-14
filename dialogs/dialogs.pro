@@ -15,5 +15,6 @@ HEADERS += qtfindreplacedialog.h \
     findform.h \
     finddialog.h
 FORMS += findreplaceform.ui \
-    findreplacedialog.ui
+    findreplacedialog.ui \
+    finddialog.ui
 DESTDIR = ../lib

@@ -10,5 +10,5 @@ on-the-fly search (highlight all occurrences)
 
 qtfindreplacedialog.* can be removed
 
-finddialog and findform as derived from findreplace (removing
-replace specific widgets)
+doxy documentation
+usage documentation
