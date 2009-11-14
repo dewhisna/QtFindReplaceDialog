@@ -13,6 +13,5 @@ HEADERS += findreplaceform.h \
     findform.h \
     finddialog.h
 FORMS += findreplaceform.ui \
-    findreplacedialog.ui \
-    finddialog.ui
+    findreplacedialog.ui
 DESTDIR = ../lib
