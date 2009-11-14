@@ -13,6 +13,7 @@ namespace Ui {
 }
 
 class QTextEdit;
+class QSettings;
 
 /**
   * A find/replace dialog.
@@ -28,6 +29,20 @@ public:
       * @param textEdit_
       */
     void setTextEdit(QTextEdit *textEdit);
+
+    /**
+      * Writes the state of the form to the passed settings.
+      * @param settings
+      * @param prefix the prefix to insert in the settings
+      */
+    virtual void writeSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
+
+    /**
+      * Reads the state of the form from the passed settings.
+      * @param settings
+      * @param prefix the prefix to look for in the settings
+      */
+    virtual void readSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
 
 protected:
     void changeEvent(QEvent *e);

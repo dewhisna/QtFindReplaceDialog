@@ -6,9 +6,18 @@
 #include <QtGui>
 #include <QTextEdit>
 #include <QRegExp>
+#include <QSettings>
 
 #include "findreplaceform.h"
 #include "ui_findreplaceform.h"
+
+#define TEXT_TO_FIND "textToFind"
+#define TEXT_TO_REPLACE "textToReplace"
+#define DOWN_RADIO "downRadio"
+#define UP_RADIO "upRadio"
+#define CASE_CHECK "caseCheck"
+#define WHOLE_CHECK "wholeCheck"
+#define REGEXP_CHECK "regexpCheck"
 
 FindReplaceForm::FindReplaceForm(QWidget *parent) :
     QWidget(parent),
@@ -127,3 +136,26 @@ void FindReplaceForm::find() {
         showError(tr("no match found"));
 }
 
+void FindReplaceForm::writeSettings(QSettings &settings, const QString &prefix) {
+    settings.beginGroup(prefix);
+    settings.setValue(TEXT_TO_FIND, ui->textToFind->text());
+    settings.setValue(TEXT_TO_REPLACE, ui->textToReplace->text());
+    settings.setValue(DOWN_RADIO, ui->downRadioButton->isChecked());
+    settings.setValue(UP_RADIO, ui->upRadioButton->isChecked());
+    settings.setValue(CASE_CHECK, ui->caseCheckBox->isChecked());
+    settings.setValue(WHOLE_CHECK, ui->wholeCheckBox->isChecked());
+    settings.setValue(REGEXP_CHECK, ui->regexCheckBox->isChecked());
+    settings.endGroup();
+}
+
+void FindReplaceForm::readSettings(QSettings &settings, const QString &prefix) {
+    settings.beginGroup(prefix);
+    ui->textToFind->setText(settings.value(TEXT_TO_FIND, "").toString());
+    ui->textToReplace->setText(settings.value(TEXT_TO_REPLACE, "").toString());
+    ui->downRadioButton->setChecked(settings.value(DOWN_RADIO, true).toBool());
+    ui->upRadioButton->setChecked(settings.value(UP_RADIO, false).toBool());
+    ui->caseCheckBox->setChecked(settings.value(CASE_CHECK, false).toBool());
+    ui->wholeCheckBox->setChecked(settings.value(WHOLE_CHECK, false).toBool());
+    ui->regexCheckBox->setChecked(settings.value(REGEXP_CHECK, false).toBool());
+    settings.endGroup();
+}

@@ -23,8 +23,12 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+    void closeEvent(QCloseEvent *event);
 
     void createActions();
+
+    void writeSettings();
+    void readSettings();
 
 private slots:
     void about();

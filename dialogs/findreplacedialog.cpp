@@ -33,3 +33,11 @@ void FindReplaceDialog::changeEvent(QEvent *e)
 void FindReplaceDialog::setTextEdit(QTextEdit *textEdit) {
     ui->findReplaceForm->setTextEdit(textEdit);
 }
+
+void FindReplaceDialog::writeSettings(QSettings &settings, const QString &prefix) {
+    ui->findReplaceForm->writeSettings(settings, prefix);
+}
+
+void FindReplaceDialog::readSettings(QSettings &settings, const QString &prefix) {
+    ui->findReplaceForm->readSettings(settings, prefix);
+}

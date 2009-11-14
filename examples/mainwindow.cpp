@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
             );
 
     createActions();
+
+    readSettings();
 }
 
 MainWindow::~MainWindow()
@@ -72,4 +74,22 @@ void MainWindow::findDialog() {
 
 void MainWindow::findReplaceDialog() {
     m_findReplaceDialog->show();
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    writeSettings();
+    event->accept();
+}
+
+void MainWindow::writeSettings() {
+    QSettings settings("QtFindReplaceDialog", "QtFindReplaceDialogExample");
+    m_findDialog->writeSettings(settings);
+    m_findReplaceDialog->writeSettings(settings);
+}
+
+void MainWindow::readSettings() {
+    QSettings settings("QtFindReplaceDialog", "QtFindReplaceDialogExample");
+    m_findDialog->readSettings(settings);
+    m_findReplaceDialog->readSettings(settings);
 }
