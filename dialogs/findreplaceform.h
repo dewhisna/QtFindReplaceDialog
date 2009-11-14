@@ -22,13 +22,16 @@ class FindReplaceForm : public QWidget {
     Q_OBJECT
 public:
     FindReplaceForm(QWidget *parent = 0);
-    ~FindReplaceForm();
+    virtual ~FindReplaceForm();
 
     /**
       * Associates the text editor where to perform the search
       * @param textEdit_
       */
     void setTextEdit(QTextEdit *textEdit_) { textEdit = textEdit_; }
+
+    /// hides replace widgets from the form
+    void hideReplaceWidgets();
 
 protected:
     void changeEvent(QEvent *e);

@@ -4,32 +4,16 @@
  */
 
 #include "finddialog.h"
-#include "ui_finddialog.h"
+#include "ui_findreplacedialog.h"
 
 FindDialog::FindDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::FindDialog)
+    FindReplaceDialog(parent)
 {
-    ui->setupUi(this);
+    ui->findReplaceForm->hideReplaceWidgets();
+    setWindowTitle(tr("Find"));
 }
 
 FindDialog::~FindDialog()
 {
-    delete ui;
 }
 
-void FindDialog::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
-}
-
-void FindDialog::setTextEdit(QTextEdit *textEdit) {
-    ui->findForm->setTextEdit(textEdit);
-}

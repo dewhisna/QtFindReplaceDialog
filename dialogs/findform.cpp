@@ -13,8 +13,7 @@
 FindForm::FindForm(QWidget *parent) :
     FindReplaceForm(parent)
 {
-    ui->replaceLabel->setVisible(false);
-    ui->textToReplace->setVisible(false);
+    hideReplaceWidgets();
 }
 
 FindForm::~FindForm()

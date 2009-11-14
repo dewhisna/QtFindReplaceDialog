@@ -32,6 +32,11 @@ FindReplaceForm::~FindReplaceForm()
     delete ui;
 }
 
+void FindReplaceForm::hideReplaceWidgets() {
+    ui->replaceLabel->setVisible(false);
+    ui->textToReplace->setVisible(false);
+}
+
 void FindReplaceForm::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);

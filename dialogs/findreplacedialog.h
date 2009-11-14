@@ -21,7 +21,7 @@ class FindReplaceDialog : public QDialog {
     Q_OBJECT
 public:
     FindReplaceDialog(QWidget *parent = 0);
-    ~FindReplaceDialog();
+    virtual ~FindReplaceDialog();
 
     /**
       * Associates the text editor where to perform the search
