@@ -15,3 +15,10 @@ HEADERS += findreplaceform.h \
 FORMS += findreplaceform.ui \
     findreplacedialog.ui
 DESTDIR = ../lib
+
+target.path = /lib
+
+headers.files = $$HEADERS
+headers.path = /include
+
+INSTALLS += target headers
