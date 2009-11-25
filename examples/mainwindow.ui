@@ -35,6 +35,9 @@
     </property>
     <addaction name="actionFind"/>
     <addaction name="actionReplace"/>
+    <addaction name="separator"/>
+    <addaction name="actionFindNext"/>
+    <addaction name="actionFindPrevious"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -49,7 +52,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionFind">
    <property name="text">
-    <string>&amp;Find</string>
+    <string>&amp;Find...</string>
    </property>
    <property name="toolTip">
     <string>Find menu</string>
@@ -83,6 +86,28 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionFindNext">
+   <property name="text">
+    <string>Find &amp;Next</string>
+   </property>
+   <property name="toolTip">
+    <string>Find next occurrence</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="actionFindPrevious">
+   <property name="text">
+    <string>Find &amp;Previous</string>
+   </property>
+   <property name="toolTip">
+    <string>Find previous occurrence</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F3</string>
    </property>
   </action>
  </widget>

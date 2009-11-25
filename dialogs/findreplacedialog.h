@@ -46,6 +46,17 @@ public:
       */
     virtual void readSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
 
+public slots:
+    /**
+     * Finds the next occurrence
+     */
+    void findNext();
+
+    /**
+     * Finds the previous occurrence
+     */
+    void findPrev();
+
 protected:
     void changeEvent(QEvent *e);
 

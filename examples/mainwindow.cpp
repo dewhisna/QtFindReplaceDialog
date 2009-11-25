@@ -47,6 +47,9 @@ void MainWindow::createActions() {
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
 
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+    connect(ui->actionFindNext, SIGNAL(triggered()), m_findDialog, SLOT(findNext()));
+    connect(ui->actionFindPrevious, SIGNAL(triggered()), m_findDialog, SLOT(findPrev()));
 }
 
 void MainWindow::changeEvent(QEvent *e)

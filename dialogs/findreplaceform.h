@@ -50,6 +50,23 @@ public:
       */
     virtual void readSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
 
+    /**
+     * performs the find task
+     * @param down whether to find the next or the previous
+     * occurrence
+     */
+    void find(bool down);
+
+    /**
+     * Finds the next occurrence
+     */
+    void findNext() { find(true); }
+
+    /**
+     * Finds the previous occurrence
+     */
+    void findPrev() { find(false); }
+
 protected:
     void changeEvent(QEvent *e);
 
@@ -57,7 +74,9 @@ protected:
     void showError(const QString &error);
 
 protected slots:
-    /// performs the find task
+    /**
+     * performs the find task
+     */
     void find();
 
     /// when the text edit contents changed

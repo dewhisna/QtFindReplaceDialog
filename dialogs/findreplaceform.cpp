@@ -98,11 +98,15 @@ void FindReplaceForm::showError(const QString &error) {
 }
 
 void FindReplaceForm::find() {
+    find(!ui->upRadioButton->isChecked());
+}
+
+void FindReplaceForm::find(bool next) {
     if (!textEdit)
         return; // TODO: show some warning?
 
     // backward search
-    bool back = ui->upRadioButton->isChecked();
+    bool back = !next;
 
     const QString &toSearch = ui->textToFind->text();
 

@@ -41,3 +41,11 @@ void FindReplaceDialog::writeSettings(QSettings &settings, const QString &prefix
 void FindReplaceDialog::readSettings(QSettings &settings, const QString &prefix) {
     ui->findReplaceForm->readSettings(settings, prefix);
 }
+
+void FindReplaceDialog::findNext() {
+    ui->findReplaceForm->findNext();
+}
+
+void FindReplaceDialog::findPrev() {
+    ui->findReplaceForm->findPrev();
+}
