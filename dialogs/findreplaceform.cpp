@@ -34,6 +34,8 @@ FindReplaceForm::FindReplaceForm(QWidget *parent) :
 
     connect(ui->findButton, SIGNAL(clicked()), this, SLOT(find()));
     connect(ui->closeButton, SIGNAL(clicked()), parent, SLOT(close()));
+
+    connect(ui->replaceButton, SIGNAL(clicked()), this, SLOT(replace()));
 }
 
 FindReplaceForm::~FindReplaceForm()
@@ -46,6 +48,12 @@ void FindReplaceForm::hideReplaceWidgets() {
     ui->textToReplace->setVisible(false);
     ui->replaceButton->setVisible(false);
     ui->replaceAllButton->setVisible(false);
+}
+
+void FindReplaceForm::setTextEdit(QTextEdit *textEdit_) {
+    textEdit = textEdit_;
+    connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceButton, SLOT(setEnabled(bool)));
+    connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceAllButton, SLOT(setEnabled(bool)));
 }
 
 void FindReplaceForm::changeEvent(QEvent *e)
@@ -98,7 +106,7 @@ void FindReplaceForm::showError(const QString &error) {
 }
 
 void FindReplaceForm::find() {
-    find(!ui->upRadioButton->isChecked());
+    find(ui->downRadioButton->isChecked());
 }
 
 void FindReplaceForm::find(bool next) {
@@ -140,6 +148,15 @@ void FindReplaceForm::find(bool next) {
         showError("");
     else
         showError(tr("no match found"));
+}
+
+void FindReplaceForm::replace() {
+    if (!textEdit->textCursor().hasSelection()) {
+        find();
+    } else {
+        textEdit->textCursor().insertText(ui->textToReplace->text());
+        find();
+    }
 }
 
 void FindReplaceForm::writeSettings(QSettings &settings, const QString &prefix) {

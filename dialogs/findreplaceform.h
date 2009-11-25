@@ -31,7 +31,7 @@ public:
       * Associates the text editor where to perform the search
       * @param textEdit_
       */
-    void setTextEdit(QTextEdit *textEdit_) { textEdit = textEdit_; }
+    void setTextEdit(QTextEdit *textEdit_);
 
     /// hides replace widgets from the form
     void hideReplaceWidgets();
@@ -50,12 +50,18 @@ public:
       */
     virtual void readSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
 
+public slots:
     /**
      * performs the find task
      * @param down whether to find the next or the previous
      * occurrence
      */
     void find(bool down);
+
+    /**
+     * Finds the next occurrence
+     */
+    void find();
 
     /**
      * Finds the next occurrence
@@ -67,6 +73,11 @@ public:
      */
     void findPrev() { find(false); }
 
+    /**
+      * Replaces the found occurrences and goes to the next occurrence
+      */
+    void replace();
+
 protected:
     void changeEvent(QEvent *e);
 
@@ -74,11 +85,6 @@ protected:
     void showError(const QString &error);
 
 protected slots:
-    /**
-     * performs the find task
-     */
-    void find();
-
     /// when the text edit contents changed
     void textToFindChanged();
 
