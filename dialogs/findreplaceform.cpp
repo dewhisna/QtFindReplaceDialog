@@ -44,6 +44,8 @@ FindReplaceForm::~FindReplaceForm()
 void FindReplaceForm::hideReplaceWidgets() {
     ui->replaceLabel->setVisible(false);
     ui->textToReplace->setVisible(false);
+    ui->replaceButton->setVisible(false);
+    ui->replaceAllButton->setVisible(false);
 }
 
 void FindReplaceForm::changeEvent(QEvent *e)
