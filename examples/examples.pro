@@ -9,15 +9,23 @@ QT       += testlib
 TARGET = qtfindreplacedialog_example
 TEMPLATE = app
 
-#unix:!macx {
-#qtfindreplacedialog_example.depends += ../lib/libqtfindreplacedialog.a
-#}
+# -------------------------------------------------
+# Auto select compiler
+# -------------------------------------------------
+win32-g++:      COMPILER = mingw
+win32-msvc*:    COMPILER = msvc
+linux-g++:      COMPILER = gcc
 
 INCLUDEPATH += . ../dialogs ../lib
 DEPENDPATH += ../lib .
 
 LIBS += -L../lib -lqtfindreplacedialog
-TARGETDEPS += ../lib/libqtfindreplacedialog.a
+
+QTFINDREPLACE_LIB = ../lib/libqtfindreplacedialog.a
+contains(COMPILER, msvc) {
+    QTFINDREPLACE_LIB = ../lib/qtfindreplacedialog.lib
+}
+TARGETDEPS += $$QTFINDREPLACE_LIB
 
 SOURCES += main.cpp\
         mainwindow.cpp
