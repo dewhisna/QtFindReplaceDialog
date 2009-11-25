@@ -78,11 +78,19 @@ public slots:
       */
     void replace();
 
+    /**
+      * Replaces all the found occurrences
+      */
+    void replaceAll();
+
 protected:
     void changeEvent(QEvent *e);
 
     /// shows an error in the dialog
     void showError(const QString &error);
+
+    /// shows a message in the dialog
+    void showMessage(const QString &message);
 
 protected slots:
     /// when the text edit contents changed

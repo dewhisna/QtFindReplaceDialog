@@ -36,6 +36,7 @@ FindReplaceForm::FindReplaceForm(QWidget *parent) :
     connect(ui->closeButton, SIGNAL(clicked()), parent, SLOT(close()));
 
     connect(ui->replaceButton, SIGNAL(clicked()), this, SLOT(replace()));
+    connect(ui->replaceAllButton, SIGNAL(clicked()), this, SLOT(replaceAll()));
 }
 
 FindReplaceForm::~FindReplaceForm()
@@ -105,6 +106,16 @@ void FindReplaceForm::showError(const QString &error) {
     }
 }
 
+void FindReplaceForm::showMessage(const QString &message) {
+    if (message == "") {
+        ui->errorLabel->setText("");
+    } else {
+        ui->errorLabel->setText("<span style=\" font-weight:600; color:green;\">" +
+                                message +
+                                "</spam>");
+    }
+}
+
 void FindReplaceForm::find() {
     find(ui->downRadioButton->isChecked());
 }
@@ -157,6 +168,16 @@ void FindReplaceForm::replace() {
         textEdit->textCursor().insertText(ui->textToReplace->text());
         find();
     }
+}
+
+void FindReplaceForm::replaceAll() {
+    int i=0;
+    while (textEdit->textCursor().hasSelection()){
+        textEdit->textCursor().insertText(ui->textToReplace->text());
+        find();
+        i++;
+    }
+    showMessage(tr("Replaced %1 occurrence(s)").arg(i));
 }
 
 void FindReplaceForm::writeSettings(QSettings &settings, const QString &prefix) {
