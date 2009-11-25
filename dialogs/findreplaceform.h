@@ -9,6 +9,8 @@
 #include <QWidget>
 #include <QTextCursor>
 
+#include "findreplace_global.h"
+
 namespace Ui {
     class FindReplaceForm;
 }
@@ -19,7 +21,7 @@ class QSettings;
 /**
   * The form for the find/replace dialog
   */
-class FindReplaceForm : public QWidget {
+class FINDREPLACESHARED_EXPORT FindReplaceForm : public QWidget {
     Q_OBJECT
 public:
     FindReplaceForm(QWidget *parent = 0);

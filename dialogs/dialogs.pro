@@ -3,7 +3,7 @@
 # -------------------------------------------------
 TARGET = qtfindreplacedialog
 TEMPLATE = lib
-DEFINES += LIB_LIBRARY
+DEFINES += FINDREPLACE_LIBRARY
 SOURCES += findform.cpp \
     finddialog.cpp \
     findreplaceform.cpp \
@@ -11,14 +11,13 @@ SOURCES += findform.cpp \
 HEADERS += findreplaceform.h \
     findreplacedialog.h \
     findform.h \
-    finddialog.h
+    finddialog.h \
+    findreplace_global.h
 FORMS += findreplaceform.ui \
     findreplacedialog.ui
 DESTDIR = ../lib
-
 target.path = /lib
-
 headers.files = $$HEADERS
 headers.path = /include
-
-INSTALLS += target headers
+INSTALLS += target \
+    headers

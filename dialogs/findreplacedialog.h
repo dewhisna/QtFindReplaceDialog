@@ -8,6 +8,8 @@
 
 #include <QDialog>
 
+#include "findreplace_global.h"
+
 namespace Ui {
     class FindReplaceDialog;
 }
@@ -18,7 +20,7 @@ class QSettings;
 /**
   * A find/replace dialog.
   */
-class FindReplaceDialog : public QDialog {
+class FINDREPLACESHARED_EXPORT FindReplaceDialog : public QDialog {
     Q_OBJECT
 public:
     FindReplaceDialog(QWidget *parent = 0);

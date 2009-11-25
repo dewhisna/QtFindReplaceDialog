@@ -9,13 +9,15 @@
 #include <QWidget>
 #include <QTextCursor>
 
+#include "findreplace_global.h"
+
 #include "findreplaceform.h"
 
 /**
   * The form for the find dialog (it is basically the same
   * as FindReplaceForm without the replace related widgets)
   */
-class FindForm : public FindReplaceForm {
+class FINDREPLACESHARED_EXPORT FindForm : public FindReplaceForm {
     Q_OBJECT
 public:
     FindForm(QWidget *parent = 0);
