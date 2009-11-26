@@ -155,10 +155,14 @@ void FindReplaceForm::find(bool next) {
         result = textEdit->find(toSearch, flags);
     }
 
-    if (result)
+    if (result) {
         showError("");
-    else
+    } else {
         showError(tr("no match found"));
+        // move to the beginning of the document for the next find
+        textCursor.setPosition(0);
+        textEdit->setTextCursor(textCursor);
+    }
 }
 
 void FindReplaceForm::replace() {
