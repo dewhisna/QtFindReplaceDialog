@@ -1,0 +1,35 @@
+/* -*- mode: C++ ; c-file-style: "stroustrup" -*- *****************************
+ * QtFindReplaceDialog
+ * Copyright (C) 2009   Lorenzo Bettini <http://www.lorenzobettini.it>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the Qwt License, Version 1.0
+ *****************************************************************************/
+
+/*
+  This file contains NO source code, just some documentation for doxygen to
+  parse.
+*/
+
+/*!
+  \mainpage QtFindReplaceDialog - Find/Replace Qt dialog
+
+QtFindReplaceDialog is an implementation of a Find/Replace Qt dialog to be used in qt text edit based applications.
+
+
+  \image html plot.png
+
+  \section homepage Project page
+  The official project page is hosted at http://qtfindreplacedialog.sourceforge.net/
+
+  \section license License
+
+  Source-Highlight-Ide is distributed under the terms of the \ref gpllicence.
+
+*/
+
+/*!
+  \page gpllicence GNU GPL Licence
+  \verbinclude "COPYING"
+*/
+
