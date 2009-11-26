@@ -19,7 +19,9 @@ class QTextEdit;
 class QSettings;
 
 /**
-  * The form for the find/replace dialog
+  * The form for the find/replace dialog.  The form presents the typical
+  * widgets you find in standard find/replace dialogs, and it acts on a QTextEdit;
+  * you need to set the QTextEdit explicitly, using the method setTextEdit(QTextEdit *textEdit).
   */
 class FINDREPLACESHARED_EXPORT FindReplaceForm : public QWidget {
     Q_OBJECT
