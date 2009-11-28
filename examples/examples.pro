@@ -21,7 +21,7 @@ DEPENDPATH += ../lib .
 
 LIBS += -L../lib -lqtfindreplacedialog
 
-QTFINDREPLACE_LIB = ../lib/libqtfindreplacedialog.a
+QTFINDREPLACE_LIB = ../lib/libqtfindreplacedialog.*
 contains(COMPILER, msvc) {
     QTFINDREPLACE_LIB = ../lib/qtfindreplacedialog.lib
 }
