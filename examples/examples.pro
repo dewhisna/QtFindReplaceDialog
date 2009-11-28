@@ -33,3 +33,11 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+target.path = /share/examples/qtfindreplacedialog
+
+example.files = $$HEADERS $$SOURCES $$FORMS
+example.path = /share/examples/qtfindreplacedialog
+
+INSTALLS += target \
+    example
