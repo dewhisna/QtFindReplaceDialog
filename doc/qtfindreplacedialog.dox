@@ -14,14 +14,20 @@
 /*!
   \mainpage QtFindReplaceDialog - Find/Replace Qt dialog
 
-QtFindReplaceDialog is an implementation of a Find/Replace Qt dialog to be used in qt text edit based applications.
+  QtFindReplaceDialog is an implementation of a Find/Replace Qt dialog to be used in qt text edit based applications.
+  A simple Find (only) dialog is also provided.
 
+  The dialogs can be used as a library, or simply by importing the sources into your own applications.
 
-  \image html Screenshot-FindReplace.png
+  Here are some screenshots:
 
-  \image html Screenshot-FindReplace2.png
+  \image html Screenshot-FindReplace.png Find/Replace dialog in Gnome
 
-  \image html Screenshot-Find.png
+  \image html Screenshot-FindReplace2.png Find/Replace dialog after a replace all operation
+
+  \image html Screenshot-FindReplaceWin.png Find/Replace dialog in Windows XP
+
+  \image html Screenshot-Find.png Find dialog
 
   \section homepage Project page
   The git repository for QtFindReplaceDialog can be found here:
