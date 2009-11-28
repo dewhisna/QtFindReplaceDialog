@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include (doc/doc.pro)
+
 TEMPLATE = subdirs
 
 SUBDIRS = dialogs examples
