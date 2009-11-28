@@ -20,6 +20,10 @@
   The dialogs can be used as a library, or simply by importing the sources into your own applications.
 
   \section homepage Project page
+
+  The project page for QtFindReplaceDialog is:
+  http://qtfindreplace.sourceforge.net
+
   The git repository for QtFindReplaceDialog can be found here:
   http://gitorious.org/qtfindreplacedialog/qtfindreplacedialog
 
