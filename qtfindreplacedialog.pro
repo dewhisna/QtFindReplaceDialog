@@ -11,4 +11,4 @@ SUBDIRS = dialogs examples
 CONFIG += ordered recursive
 
 OTHER_FILES = TODO \
-    COPYING
+    COPYING README.txt

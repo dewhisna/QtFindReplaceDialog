@@ -896,7 +896,7 @@ QCH_FILE               = "qtfindreplacedialog.qch"
 # Qt Help Project output. For more information please see 
 # http://doc.trolltech.com/qthelpproject.html#namespace
 
-QHP_NAMESPACE          = "net.sf.qtfindreplacedialog"
+QHP_NAMESPACE          = "my.qtfindreplacedialog"
 
 # The QHP_VIRTUAL_FOLDER tag specifies the namespace to use when generating 
 # Qt Help Project output. For more information please see 

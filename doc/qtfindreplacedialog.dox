@@ -19,6 +19,36 @@
 
   The dialogs can be used as a library, or simply by importing the sources into your own applications.
 
+  \section homepage Project page
+  The git repository for QtFindReplaceDialog can be found here:
+  http://gitorious.org/qtfindreplacedialog/qtfindreplacedialog
+
+  \section install Installation
+
+  You can use these dialogs in your applications either by copying the files in
+  the \c dialogs directory, or by building the dialogs as library.
+
+  You can build the library by using qmake and then make.
+  For instance, if you use a shadow build (which is reccomended), simply create
+  a build directory and enter there.  Then run
+
+  \verbatim
+  qmake -recursive ../qtfindreplacedialog.pro
+  make  \endverbatim
+
+  A running example, using the find and find/replace dialogs, can be found in
+  the directory <tt>examples</tt> (this will be built also).  You can take
+  a look at the examples in the section \ref examples.
+
+  You can specify additional arguments for qmake, for instance, if you want to build the
+  library statically use <tt>CONFIG+=static</tt>.  Then, you can install it using <tt>make install</tt>,
+  possibly by using a specific installation root:
+
+  \verbatim
+  INSTALL_ROOT=$HOME/usr/local make install   \endverbatim
+
+  \section screenshots Screenshots
+
   Here are some screenshots:
 
   \image html Screenshot-FindReplace.png Find/Replace dialog in Gnome
@@ -31,18 +61,16 @@
 
   \image html Screenshot-Find.png Find dialog
 
-  \section homepage Project page
-  The git repository for QtFindReplaceDialog can be found here:
-  http://gitorious.org/qtfindreplacedialog/qtfindreplacedialog
+
 
   \section license License
 
-  Source-Highlight-Ide is distributed under the terms of the \ref gpllicence.
+  QtFindReplaceDialog is distributed under the terms of the \ref gpllicence.
 
 */
 
 /*!
-  \page gpllicence GNU GPL Licence
+  \page gpllicence GNU LGPL Licence
   \verbinclude "COPYING"
 */
 
