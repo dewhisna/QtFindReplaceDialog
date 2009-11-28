@@ -13,7 +13,8 @@
 #include "findreplacedialog.h"
 
 /**
-  * A find dialog
+  * A find dialog (it is basically the same
+  * as FindReplaceDialog without the replace related widgets).
   */
 class FINDREPLACESHARED_EXPORT FindDialog : public FindReplaceDialog {
     Q_OBJECT

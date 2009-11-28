@@ -19,6 +19,8 @@ class QSettings;
 
 /**
   * A find/replace dialog.
+  *
+  * It relies on a FindReplaceForm object (see that class for the functionalities provided).
   */
 class FINDREPLACESHARED_EXPORT FindReplaceDialog : public QDialog {
     Q_OBJECT
@@ -28,7 +30,7 @@ public:
 
     /**
       * Associates the text editor where to perform the search
-      * @param textEdit_
+      * @param textEdit
       */
     void setTextEdit(QTextEdit *textEdit);
 
