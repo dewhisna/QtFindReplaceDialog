@@ -33,3 +33,8 @@ QtFindReplaceDialog is an implementation of a Find/Replace Qt dialog to be used 
   \verbinclude "COPYING"
 */
 
+/*!
+  \page examples Examples
+  \include mainwindow.h
+  \include mainwindow.cpp
+*/
