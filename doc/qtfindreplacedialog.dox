@@ -24,7 +24,8 @@ QtFindReplaceDialog is an implementation of a Find/Replace Qt dialog to be used 
   \image html Screenshot-Find.png
 
   \section homepage Project page
-  The official project page is hosted at http://qtfindreplacedialog.sourceforge.net/
+  The git repository for QtFindReplaceDialog can be found here:
+  http://gitorious.org/qtfindreplacedialog/qtfindreplacedialog
 
   \section license License
 
