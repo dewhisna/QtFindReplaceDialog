@@ -6,7 +6,7 @@
 # CVS files and build directories
 
 PACKAGE=qtfindreplacedialog
-VERSION=1.0
+VERSION=1.1
 
 tar \
     --exclude-vcs \
