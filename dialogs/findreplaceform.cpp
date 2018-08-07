@@ -158,7 +158,7 @@ void FindReplaceForm::find(bool next) {
     if (result) {
         showError("");
     } else {
-        showError(tr("no match found"));
+        showError(tr("no match found", "FindDialog"));
         // move to the beginning of the document for the next find
         textCursor.setPosition(0);
         textEdit->setTextCursor(textCursor);
@@ -181,7 +181,7 @@ void FindReplaceForm::replaceAll() {
         find();
         i++;
     }
-    showMessage(tr("Replaced %1 occurrence(s)").arg(i));
+    showMessage(tr("Replaced %1 occurrence(s)", "FindDialog").arg(i));
 }
 
 void FindReplaceForm::writeSettings(QSettings &settings, const QString &prefix) {
