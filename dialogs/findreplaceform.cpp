@@ -97,22 +97,22 @@ void FindReplaceForm::validateRegExp(const QString &text) {
 }
 
 void FindReplaceForm::showError(const QString &error) {
-    if (error == "") {
+    if (error.isEmpty()) {
         ui->errorLabel->setText("");
     } else {
         ui->errorLabel->setText("<span style=\" font-weight:600; color:#ff0000;\">" +
                                 error +
-                                "</spam>");
+                                "</span>");
     }
 }
 
 void FindReplaceForm::showMessage(const QString &message) {
-    if (message == "") {
+    if (message.isEmpty()) {
         ui->errorLabel->setText("");
     } else {
         ui->errorLabel->setText("<span style=\" font-weight:600; color:green;\">" +
                                 message +
-                                "</spam>");
+                                "</span>");
     }
 }
 
@@ -147,7 +147,7 @@ void FindReplaceForm::find(bool next) {
         qDebug() << "searching for regexp: " << reg.pattern();
 
         textCursor = textEdit->document()->find(reg, textCursor, flags);
-        textEdit->setTextCursor(textCursor);
+        if (!textCursor.isNull()) textEdit->setTextCursor(textCursor);
         result = (!textCursor.isNull());
     } else {
         qDebug() << "searching for: " << toSearch;
@@ -160,6 +160,7 @@ void FindReplaceForm::find(bool next) {
     } else {
         showError(tr("no match found", "FindDialog"));
         // move to the beginning of the document for the next find
+        textCursor = textEdit->textCursor();
         textCursor.setPosition(0);
         textEdit->setTextCursor(textCursor);
     }
