@@ -7,7 +7,7 @@
 #include "ui_findreplacedialog.h"
 
 FindReplaceDialog::FindReplaceDialog(QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::FindReplaceDialog)
 {
     ui->setupUi(this);
