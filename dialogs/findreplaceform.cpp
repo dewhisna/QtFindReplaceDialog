@@ -20,6 +20,8 @@
 #define WHOLE_CHECK "wholeCheck"
 #define REGEXP_CHECK "regexpCheck"
 
+#define DEBUG_FIND 0    // Set to '1' to enable debugging of 'find'
+
 FindReplaceForm::FindReplaceForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FindReplaceForm), textEdit(0)
@@ -157,13 +159,17 @@ void FindReplaceForm::find(bool next) {
         QRegExp reg(toSearch,
                     (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
 
+#if (DEBUG_FIND)
         qDebug() << "searching for regexp: " << reg.pattern();
+#endif
 
         textCursor = textEdit->document()->find(reg, textCursor, flags);
         if (!textCursor.isNull()) textEdit->setTextCursor(textCursor);
         result = (!textCursor.isNull());
     } else {
+#if (DEBUG_FIND)
         qDebug() << "searching for: " << toSearch;
+#endif
 
         result = textEdit->find(toSearch, flags);
     }
