@@ -17,6 +17,8 @@ namespace Ui {
 
 class QTextEdit;
 class QSettings;
+class QEvent;
+class QShowEvent;
 
 /**
   * The form for the find/replace dialog.  The form presents the typical
@@ -78,6 +80,11 @@ public:
 
 public slots:
     /**
+     * Sets the current textToFind (used to set it from specialized current selection, etc)
+     */
+    void setTextToFind(const QString &strText);
+
+    /**
      * performs the find task
      * @param down whether to find the next or the previous
      * occurrence
@@ -111,6 +118,7 @@ public slots:
 
 protected:
     void changeEvent(QEvent *e);
+    void showEvent(QShowEvent *event);
 
     /// shows an error in the dialog
     void showError(const QString &error);

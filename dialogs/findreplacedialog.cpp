@@ -42,6 +42,16 @@ void FindReplaceDialog::readSettings(QSettings &settings, const QString &prefix)
     ui->findReplaceForm->readSettings(settings, prefix);
 }
 
+void FindReplaceDialog::setTextToFind(const QString &strText)
+{
+    ui->findReplaceForm->setTextToFind(strText);
+}
+
+void FindReplaceDialog::find()
+{
+    ui->findReplaceForm->find();
+}
+
 void FindReplaceDialog::findNext() {
     ui->findReplaceForm->findNext();
 }

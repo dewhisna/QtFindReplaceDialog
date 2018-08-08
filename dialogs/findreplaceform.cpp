@@ -7,6 +7,7 @@
 #include <QTextEdit>
 #include <QRegExp>
 #include <QSettings>
+#include <QShowEvent>
 
 #include "findreplaceform.h"
 #include "ui_findreplaceform.h"
@@ -69,6 +70,13 @@ void FindReplaceForm::changeEvent(QEvent *e)
     }
 }
 
+void FindReplaceForm::showEvent(QShowEvent *event)
+{
+    showError(QString());
+    showMessage(QString());
+    QWidget::showEvent(event);
+}
+
 void FindReplaceForm::textToFindChanged() {
     ui->findButton->setEnabled(ui->textToFind->text().size() > 0);
 }
@@ -114,6 +122,11 @@ void FindReplaceForm::showMessage(const QString &message) {
                                 message +
                                 "</span>");
     }
+}
+
+void FindReplaceForm::setTextToFind(const QString &strText)
+{
+    ui->textToFind->setText(strText);
 }
 
 void FindReplaceForm::find() {

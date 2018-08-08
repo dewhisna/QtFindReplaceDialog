@@ -50,6 +50,16 @@ public:
 
 public slots:
     /**
+     * Sets the current textToFind (used to set it from specialized current selection, etc)
+     */
+    void setTextToFind(const QString &strText);
+
+    /**
+     * Finds the next or previous occurrence:
+     */
+    void find();
+
+    /**
      * Finds the next occurrence
      */
     void findNext();
