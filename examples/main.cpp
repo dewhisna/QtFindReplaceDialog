@@ -3,7 +3,7 @@
  * See COPYING file that comes with this distribution
  */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
