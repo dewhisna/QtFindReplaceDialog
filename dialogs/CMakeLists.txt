@@ -41,8 +41,14 @@ set_target_properties(QtFindReplaceDialog PROPERTIES PUBLIC_HEADER ${QtFindRepla
 target_compile_options(QtFindReplaceDialog PUBLIC "-Wall")
 qt5_use_modules(QtFindReplaceDialog Core Widgets)
 
-install(TARGETS QtFindReplaceDialog
-			ARCHIVE DESTINATION "lib"
-			PUBLIC_HEADER DESTINATION "include"
+target_include_directories(QtFindReplaceDialog SYSTEM INTERFACE
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+	$<INSTALL_INTERFACE:QtFindReplaceDialog/include>  # <prefix>/QtFindReplaceDialog/include
 )
 
+install(TARGETS QtFindReplaceDialog
+			EXPORT QtFindReplaceDialog
+			ARCHIVE DESTINATION "QtFindReplaceDialog/lib"
+			PUBLIC_HEADER DESTINATION "QtFindReplaceDialog/include"
+)
+install(EXPORT QtFindReplaceDialog DESTINATION QtFindReplaceDialog/cmake)
