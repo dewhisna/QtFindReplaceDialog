@@ -55,7 +55,13 @@ void FindReplaceForm::hideReplaceWidgets() {
 }
 
 void FindReplaceForm::setTextEdit(QTextEdit *textEdit_) {
+    if (textEdit) {
+        // Disconnect old control:
+        disconnect(textEdit, 0, ui->replaceButton, 0);
+        disconnect(textEdit, 0, ui->replaceAllButton, 0);
+    }
     textEdit = textEdit_;
+    if (!textEdit) return;
     connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceButton, SLOT(setEnabled(bool)));
     connect(textEdit, SIGNAL(copyAvailable(bool)), ui->replaceAllButton, SLOT(setEnabled(bool)));
 }
@@ -186,6 +192,7 @@ void FindReplaceForm::find(bool next) {
 }
 
 void FindReplaceForm::replace() {
+    if (!textEdit) return;
     if (!textEdit->textCursor().hasSelection()) {
         find();
     } else {
@@ -195,6 +202,7 @@ void FindReplaceForm::replace() {
 }
 
 void FindReplaceForm::replaceAll() {
+    if (!textEdit) return;
     int i=0;
     while (textEdit->textCursor().hasSelection()){
         textEdit->textCursor().insertText(ui->textToReplace->text());
