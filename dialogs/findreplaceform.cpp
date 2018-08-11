@@ -152,6 +152,15 @@ void FindReplaceForm::find(bool next) {
 
     bool result = false;
 
+    // Check the cursor for wrap:
+    textCursor = textEdit->textCursor();
+    if (next && textCursor.atEnd()) {
+        textCursor.movePosition(QTextCursor::Start);
+    } else if (back && textCursor.atStart()) {
+        textCursor.movePosition(QTextCursor::End);
+    }
+    textEdit->setTextCursor(textCursor);
+
     QTextDocument::FindFlags flags;
 
     if (back)
@@ -184,9 +193,17 @@ void FindReplaceForm::find(bool next) {
         showError("");
     } else {
         showError(tr("no match found", "FindDialog"));
-        // move to the beginning of the document for the next find
+        // move to the end of the document (if searching down)
+        //	or the beginning of the document (if searching up)
+        //	for the next find.  The next find will wrap the
+        //	cursor and this logic will work if the user switches
+        //	the direction of the search:
         textCursor = textEdit->textCursor();
-        textCursor.setPosition(0);
+        if (next) {
+            textCursor.movePosition(QTextCursor::End);
+        } else {
+            textCursor.movePosition(QTextCursor::Start);
+        }
         textEdit->setTextCursor(textCursor);
     }
 }
