@@ -37,7 +37,7 @@ add_definitions(
 # ---------------------------------------------------------
 
 add_library(QtFindReplaceDialog STATIC ${QtFindReplaceDialog_SOURCES})
-set_target_properties(QtFindReplaceDialog PROPERTIES PUBLIC_HEADER ${QtFindReplaceDialog_SHARED_HEADERS})
+set_target_properties(QtFindReplaceDialog PROPERTIES PUBLIC_HEADER "${QtFindReplaceDialog_SHARED_HEADERS}")
 target_compile_options(QtFindReplaceDialog PUBLIC "-Wall")
 qt5_use_modules(QtFindReplaceDialog Core Widgets)
 
