@@ -34,11 +34,17 @@ add_definitions(
 	"-DFINDREPLACESHARED_EXPORT="
 )
 
+if(WIN32)
+	set(MY_COMPILE_OPTIONS "/W3")
+else()
+	set(MY_COMPILE_OPTIONS "-Wall")
+endif()
+
 # ---------------------------------------------------------
 
 add_library(QtFindReplaceDialog STATIC ${QtFindReplaceDialog_SOURCES})
 set_target_properties(QtFindReplaceDialog PROPERTIES PUBLIC_HEADER "${QtFindReplaceDialog_SHARED_HEADERS}")
-target_compile_options(QtFindReplaceDialog PUBLIC "-Wall")
+target_compile_options(QtFindReplaceDialog PUBLIC ${MY_COMPILE_OPTIONS})
 qt5_use_modules(QtFindReplaceDialog Core Widgets)
 
 target_include_directories(QtFindReplaceDialog SYSTEM INTERFACE
