@@ -30,9 +30,6 @@ set(QtFindReplaceDialog_SOURCES
 	"findreplaceform.ui"
 	${QtFindReplaceDialog_SHARED_HEADERS}
 )
-add_definitions(
-	"-DFINDREPLACESHARED_EXPORT="
-)
 
 if(WIN32)
 	set(MY_COMPILE_OPTIONS "/W3")
@@ -44,6 +41,7 @@ endif()
 
 add_library(QtFindReplaceDialog STATIC ${QtFindReplaceDialog_SOURCES})
 set_target_properties(QtFindReplaceDialog PROPERTIES PUBLIC_HEADER "${QtFindReplaceDialog_SHARED_HEADERS}")
+target_compile_definitions(QtFindReplaceDialog PUBLIC "-DFINDREPLACESHARED_EXPORT=")
 target_compile_options(QtFindReplaceDialog PUBLIC ${MY_COMPILE_OPTIONS})
 qt5_use_modules(QtFindReplaceDialog Core Widgets)
 
