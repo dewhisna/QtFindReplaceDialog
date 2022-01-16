@@ -5,7 +5,11 @@
 
 #include <QtGui>
 #include <QTextEdit>
+#if QT_VERSION >= 0x050000
+#include <QRegularExpression>
+#else
 #include <QRegExp>
+#endif
 #include <QSettings>
 #include <QShowEvent>
 
@@ -102,8 +106,13 @@ void FindReplaceForm::validateRegExp(const QString &text) {
         return; // nothing to validate
     }
 
+#if QT_VERSION >= 0x050000
+    QRegularExpression reg(text,
+                (ui->caseCheckBox->isChecked() ? QRegularExpression::NoPatternOption : QRegularExpression::CaseInsensitiveOption));
+#else
     QRegExp reg(text,
                 (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
+#endif
 
     if (reg.isValid()) {
         showError("");
@@ -171,8 +180,13 @@ void FindReplaceForm::find(bool next) {
         flags |= QTextDocument::FindWholeWords;
 
     if (ui->regexCheckBox->isChecked()) {
+#if QT_VERSION >= 0x050500			// Needs to be >=5.5 since QTextDocument::find QRegularExpression is in >=5.5 below
+        QRegularExpression reg(toSearch,
+                    (ui->caseCheckBox->isChecked() ? QRegularExpression::NoPatternOption : QRegularExpression::CaseInsensitiveOption));
+#else
         QRegExp reg(toSearch,
                     (ui->caseCheckBox->isChecked() ? Qt::CaseSensitive : Qt::CaseInsensitive));
+#endif
 
 #if (DEBUG_FIND)
         qDebug() << "searching for regexp: " << reg.pattern();
