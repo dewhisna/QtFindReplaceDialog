@@ -21,24 +21,24 @@ class FINDREPLACESHARED_EXPORT FindForm : public FindReplaceForm {
     Q_OBJECT
 public:
     FindForm(QWidget *parent = 0);
-    ~FindForm();
+    virtual ~FindForm();
 
     /**
       * Writes the state of the form to the passed settings.
       * @param settings
       * @param prefix the prefix to insert in the settings
       */
-    virtual void writeSettings(QSettings &settings, const QString &prefix = "FindDialog");
+    virtual void writeSettings(QSettings &settings, const QString &prefix = "FindDialog") override;
 
     /**
       * Reads the state of the form from the passed settings.
       * @param settings
       * @param prefix the prefix to look for in the settings
       */
-    virtual void readSettings(QSettings &settings, const QString &prefix = "FindDialog");
+    virtual void readSettings(QSettings &settings, const QString &prefix = "FindDialog") override;
 
 protected:
-    void changeEvent(QEvent *e);
+    virtual void changeEvent(QEvent *e) override;
 
 };
 

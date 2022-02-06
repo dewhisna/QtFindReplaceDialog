@@ -117,8 +117,8 @@ public slots:
     void replaceAll();
 
 protected:
-    void changeEvent(QEvent *e);
-    void showEvent(QShowEvent *event);
+    virtual void changeEvent(QEvent *e) override;
+    virtual void showEvent(QShowEvent *event) override;
 
     /// shows an error in the dialog
     void showError(const QString &error);

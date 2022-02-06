@@ -20,21 +20,21 @@ class FINDREPLACESHARED_EXPORT FindDialog : public FindReplaceDialog {
     Q_OBJECT
 public:
     FindDialog(QWidget *parent = 0);
-    ~FindDialog();
+    virtual ~FindDialog();
 
     /**
       * Writes the state of the form to the passed settings.
       * @param settings
       * @param prefix the prefix to insert in the settings
       */
-    virtual void writeSettings(QSettings &settings, const QString &prefix = "FindDialog");
+    virtual void writeSettings(QSettings &settings, const QString &prefix = "FindDialog") override;
 
     /**
       * Reads the state of the form from the passed settings.
       * @param settings
       * @param prefix the prefix to look for in the settings
       */
-    virtual void readSettings(QSettings &settings, const QString &prefix = "FindDialog");
+    virtual void readSettings(QSettings &settings, const QString &prefix = "FindDialog") override;
 };
 
 #endif // FINDDIALOG_H
