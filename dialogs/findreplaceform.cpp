@@ -58,6 +58,12 @@ void FindReplaceForm::hideReplaceWidgets() {
     ui->replaceAllButton->setVisible(false);
 }
 
+void FindReplaceForm::enableRegExpControls(bool enable)
+{
+    if (!enable) ui->regexCheckBox->setChecked(false);
+    ui->regexCheckBox->setEnabled(enable);
+}
+
 void FindReplaceForm::setTextEdit(QTextEdit *textEdit_) {
     if (textEdit) {
         // Disconnect old control:
@@ -141,6 +147,30 @@ void FindReplaceForm::showMessage(const QString &message) {
     }
 }
 
+QTextDocument::FindFlags FindReplaceForm::findFlags(bool down) const
+{
+    QTextDocument::FindFlags flags = { };
+
+    if (!down)
+        flags |= QTextDocument::FindBackward;
+    if (ui->caseCheckBox->isChecked())
+        flags |= QTextDocument::FindCaseSensitively;
+    if (ui->wholeCheckBox->isChecked())
+        flags |= QTextDocument::FindWholeWords;
+
+    return flags;
+}
+
+bool FindReplaceForm::regExpMode() const
+{
+    return ui->regexCheckBox->isChecked();
+}
+
+QString FindReplaceForm::textToFind() const
+{
+    return ui->textToFind->text();
+}
+
 void FindReplaceForm::setTextToFind(const QString &strText)
 {
     ui->textToFind->setText(strText);
@@ -151,8 +181,14 @@ void FindReplaceForm::find() {
 }
 
 void FindReplaceForm::find(bool next) {
-    if (!textEdit)
-        return; // TODO: show some warning?
+    if (!textEdit) {
+        if (next) {
+            emit en_findNext();
+        } else {
+            emit en_findPrev();
+        }
+        return;
+    }
 
     // backward search
     bool back = !next;
@@ -170,14 +206,7 @@ void FindReplaceForm::find(bool next) {
     }
     textEdit->setTextCursor(textCursor);
 
-    QTextDocument::FindFlags flags;
-
-    if (back)
-        flags |= QTextDocument::FindBackward;
-    if (ui->caseCheckBox->isChecked())
-        flags |= QTextDocument::FindCaseSensitively;
-    if (ui->wholeCheckBox->isChecked())
-        flags |= QTextDocument::FindWholeWords;
+    QTextDocument::FindFlags flags = findFlags(next);
 
     if (ui->regexCheckBox->isChecked()) {
 #if QT_VERSION >= 0x050500			// Needs to be >=5.5 since QTextDocument::find QRegularExpression is in >=5.5 below
@@ -223,7 +252,10 @@ void FindReplaceForm::find(bool next) {
 }
 
 void FindReplaceForm::replace() {
-    if (!textEdit) return;
+    if (!textEdit) {
+        emit en_replace();
+        return;
+    }
     if (!textEdit->textCursor().hasSelection()) {
         find();
     } else {
@@ -233,7 +265,10 @@ void FindReplaceForm::replace() {
 }
 
 void FindReplaceForm::replaceAll() {
-    if (!textEdit) return;
+    if (!textEdit) {
+        emit en_replaceAll();
+        return;
+    }
     int i=0;
     while (textEdit->textCursor().hasSelection()){
         textEdit->textCursor().insertText(ui->textToReplace->text());

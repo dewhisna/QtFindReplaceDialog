@@ -7,6 +7,7 @@
 #define FINDREPLACEDIALOG_H
 
 #include <QDialog>
+#include <QTextDocument>
 
 #include "findreplace_global.h"
 
@@ -35,6 +36,12 @@ public:
     void setTextEdit(QTextEdit *textEdit);
 
     /**
+      * enableRegExpControls
+      * @param enable - enable/disable RegExp Controls
+      */
+    virtual void enableRegExpControls(bool enable);
+
+    /**
       * Writes the state of the form to the passed settings.
       * @param settings
       * @param prefix the prefix to insert in the settings
@@ -47,6 +54,42 @@ public:
       * @param prefix the prefix to look for in the settings
       */
     virtual void readSettings(QSettings &settings, const QString &prefix = "FindReplaceDialog");
+
+    /**
+      * Returns the current find settings from the form.
+      */
+    virtual QTextDocument::FindFlags findFlags(bool down) const;
+
+    /**
+      * regExpMode - Returns true if regExp mode is selected
+      */
+    virtual bool regExpMode() const;
+
+    /**
+      * Returns the text to find
+      */
+    virtual QString textToFind() const;
+
+signals:
+    /**
+      * en_findNext - emitted for find(true) when QTextEdit is nullptr
+      */
+    void en_findNext();
+
+    /**
+      * en_findPrev - emitted for find(false) when QTextEdit is nullptr
+      */
+    void en_findPrev();
+
+    /**
+      * en_replace - emitted for replace when QTextEdit is nullptr
+      */
+    void en_replace();
+
+    /**
+      * en_replaceAll - emitted for replaceAll when QTextEdit is nullptr
+      */
+    void en_replaceAll();
 
 public slots:
     /**
