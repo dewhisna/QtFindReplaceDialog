@@ -11,10 +11,7 @@ FindDialog::FindDialog(QWidget *parent) :
 {
     ui->findReplaceForm->hideReplaceWidgets();
     setWindowTitle(tr("Find", "FindDialog"));
-    connect(ui->findReplaceForm, SIGNAL(en_findNext()), this, SIGNAL(en_findNext()));
-    connect(ui->findReplaceForm, SIGNAL(en_findPrev()), this, SIGNAL(en_findPrev()));
-    connect(ui->findReplaceForm, SIGNAL(en_replace()), this, SIGNAL(en_replace()));
-    connect(ui->findReplaceForm, SIGNAL(en_replaceAll()), this, SIGNAL(en_replaceAll()));
+    // Note: Don't connect findNext/findPrev/replace/replaceAll here.  We inherit from FindReplaceDialog which does them.
 }
 
 FindDialog::~FindDialog()
